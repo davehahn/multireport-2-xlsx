@@ -1,0 +1,75 @@
+<template>
+  <lightning-spinner if:true={isBusy}></lightning-spinner>
+  <lightning-card title="Multi-Report Export">
+    <lightning-layout>
+      <lightning-layout-item size="6" padding="around-large">
+        <lightning-input type="text" value={fileName} onchange={handleFileNameChange} label="Export File Name (without extension)" class="slds-m-bottom_small"></lightning-input>
+        <template if:true={renderPicker}>
+          <lightning-record-picker
+            label="Find a Report"
+            placeholder="Search Reports..."
+            object-api-name="Report"
+            filter={filter}
+            value={recordPickerValue}
+            onchange={handleReportChange}
+          >
+          </lightning-record-picker>
+        </template>
+      </lightning-layout-item>
+      <lightning-layout-item size="6" padding="around-large">
+        <div class="slds-page-header slds-m-bottom_small">
+          <div class="slds-page-header__row">
+            <div class="slds-page-header__col-title">
+              <div class="slds-media">
+                <div class="slds-media__figure">
+                  <lightning-icon icon-name="standard:report"></lightning-icon>
+                </div>
+                <div class="slds-media__body">
+                  <div class="slds-page-header__name">
+                    <div class="slds-page-header__name-title">
+                      <h1>
+                        <span class="slds-page-header__title slds-truncate">{reportsHeader}</span>
+                      </h1>
+                    </div>
+                  </div>
+                  <p if:false={runningExport}> {selectedCount} selected</p>
+                  <p if:true={runningExport}> {exportSucccessCount} / {selectedCount} processed</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <table class="slds-table slds-table_cell-buffer slds-table_header-hidden slds-table_bordered" if:false={disableExport}>
+          <tbody>
+            <template for:each={selectedReports} for:item="report">
+              <tr key={report.Id}>
+                <td style="width:75%">{report.Name}</td>
+                <td style="width:25%; text-align:right; padding-right: 5px;"><lightning-button-icon icon-name="utility:close" onclick={handleRemoveReport} value={report.Id}></lightning-button-icon></lightning-button-icon></td>
+              </tr>
+            </template>
+          </tbody>
+        </table>
+        <div style="margin: auto; width: 75%" if:true={runningExport}>
+          <template for:each={selectedReports} for:item="report">
+            <div
+              key={report.Id}
+              class="slds-p-around_xx-small export-item"
+              data-report-id={report.Id}
+            >
+              {report.Name}
+            </div>
+          </template>
+        </div>
+      </lightning-layout-item>
+    </lightning-layout>
+
+    <p slot="footer">
+      <lightning-button
+        label="Run Export"
+        variant="brand"
+        onclick={handleExport}
+        disabled={disableExport}
+      ></lightning-button>
+    </p>
+  </lightning-card>
+</template>

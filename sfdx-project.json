@@ -1,0 +1,14 @@
+{
+  "packageDirectories": [
+    {
+      "path": "src",
+      "default": true,
+      "package": "Multi Report Exporter",
+      "versionNumber": "0.0.0.NEXT"
+    }
+  ],
+  "name": "mrexport",
+  "namespace": "mrexport",
+  "sfdcLoginUrl": "https://login.salesforce.com",
+  "sourceApiVersion": "59.0"
+}

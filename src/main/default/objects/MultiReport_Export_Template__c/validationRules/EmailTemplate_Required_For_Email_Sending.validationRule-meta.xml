@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>EmailTemplate_Required_For_Email_Sending</fullName>
+    <active>true</active>
+    <description>The Email Template is required if Auto Send Email is enabled</description>
+    <errorConditionFormula>AND(ISBLANK( Email_Template_Name__c ),  Auto_Send_Email__c = True )</errorConditionFormula>
+    <errorDisplayField>Email_Template_Name__c</errorDisplayField>
+    <errorMessage>You have to select an Email Template to enable Auto Send Email functionality</errorMessage>
+</ValidationRule>

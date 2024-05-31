@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Report_Id__c</fullName>
+    <description>The Id of the Report used to create a sheet in the .xlsx export</description>
+    <externalId>false</externalId>
+    <inlineHelpText>The Id of the Report used to create a sheet in the .xlsx export</inlineHelpText>
+    <label>Report Id</label>
+    <length>18</length>
+    <required>true</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

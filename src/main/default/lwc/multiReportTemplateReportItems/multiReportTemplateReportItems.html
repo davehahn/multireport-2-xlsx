@@ -1,0 +1,95 @@
+<template>
+  <lightning-spinner if:true={isBusy}></lightning-spinner>
+  <div class="slds-card">
+    <div class="slds-page-header slds-page-header_record-home">
+      <div class="slds-page-header__row">
+        <div class="slds-page-header__col-title">
+          <div class="slds-media">
+            <div class="slds-media__figure">
+              <lightning-icon icon-name="standard:report"></lightning-icon>
+            </div>
+            <div class="slds-media__body">
+              <div class="slds-page-header__name">
+                <div class="slds-page-header__name-title">
+                  <h1>
+                    <span class="slds-page-header__title slds-truncate"
+                      >Reports In Export</span
+                    >
+                  </h1>
+                </div>
+              </div>
+              <p>{reportCount} selected</p>
+            </div>
+          </div>
+        </div>
+        <div class="slds-page-header__col-actions">
+          <div class="slds-page-header__controls">
+            <div class="slds-page-header__control">
+              <lightning-button
+                label="Add Report"
+                onclick={handleAddReport}
+              ></lightning-button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <table
+      class="slds-table slds-table_cell-buffer slds-table_bordered"
+      if:false={disableExport}
+    >
+      <thead>
+        <tr class="slds-line-height_reset">
+          <th scope="col">
+            <div class="truncate">Report Name</div>
+          </th>
+          <th scope="col" class="slds-text-align_center">
+            <div class="truncate">Sheet Name</div>
+          </th>
+          <th scope="col" class="slds-text-align_center">
+            <div class="truncate">Header Overrides</div>
+          </th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <template for:each={items} for:item="item">
+          <tr key={item.Id} class="slds-hint-parent">
+            <td data-label="Report Name">
+              <div class="truncate">{item.fields.mrexport__Report_Name__c.value}</div>
+            </td>
+            <td data-label="Sheet Name" class="slds-text-align_center">
+              <div class="truncate">{item.fields.mrexport__Sheet_Name__c.value}</div>
+            </td>
+            <td data-label="Header Overrides" class="slds-text-align_center">
+              <div class="truncate">
+                {item.fields.mrexport__Header_Override_Count__c.value}
+              </div>
+            </td>
+            <td class="actions">
+              <lightning-button-menu
+                value={item.fields.Id.value}
+                onselect={handleActionMenu}
+                menu-alignment="right"
+              >
+                <lightning-menu-item
+                  value="edit"
+                  label="Edit"
+                ></lightning-menu-item>
+                <lightning-menu-item
+                  value="override"
+                  label="Header Overrides"
+                ></lightning-menu-item>
+                <lightning-menu-item
+                  value="delete"
+                  label="Delete"
+                ></lightning-menu-item>
+              </lightning-button-menu>
+            </td>
+          </tr>
+        </template>
+      </tbody>
+    </table>
+  </div>
+</template>

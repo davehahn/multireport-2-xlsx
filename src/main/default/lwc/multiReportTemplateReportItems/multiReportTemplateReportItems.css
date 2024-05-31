@@ -1,0 +1,25 @@
+table {
+  table-layout: fixed;
+  width: 100%;
+}
+
+thead > tr > th:first-child {
+  width: 50%;
+}
+
+thead > tr > th:first-child + th {
+  width: 25%;
+}
+
+thead > tr > th:first-child + th + th {
+  width: 15%;
+}
+
+thead > tr > th:first-child + th + th + th {
+  width: 10%;
+}
+
+tbody tr td.actions {
+  text-align: right;
+  padding-right: 5px;
+}

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Recipient_Required_For_Email_Sending</fullName>
+    <active>true</active>
+    <description>The Email Recipients is required if Auto Send Email is enabled</description>
+    <errorConditionFormula>AND(ISBLANK( Email_Recipients__c ),  Auto_Send_Email__c  = true )</errorConditionFormula>
+    <errorDisplayField>Email_Recipients__c</errorDisplayField>
+    <errorMessage>You must add email recipients to enable Auto Send Email functionality</errorMessage>
+</ValidationRule>

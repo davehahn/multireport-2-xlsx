@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>MultiReport_Export_Template__c</fullName>
+    <externalId>false</externalId>
+    <label>MultiReport Export Template</label>
+    <referenceTo>MultiReport_Export_Template__c</referenceTo>
+    <relationshipLabel>MultiReport Export Header Overrides</relationshipLabel>
+    <relationshipName>MultiReport_Export_Header_Overrides</relationshipName>
+    <relationshipOrder>0</relationshipOrder>
+    <reparentableMasterDetail>false</reparentableMasterDetail>
+    <trackTrending>false</trackTrending>
+    <type>MasterDetail</type>
+    <writeRequiresMasterRead>false</writeRequiresMasterRead>
+</CustomField>

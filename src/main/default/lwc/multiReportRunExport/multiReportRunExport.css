@@ -1,0 +1,29 @@
+:host {
+  --slds-c-modal-header-color-background: green;
+
+  --slds-c-modal-header-text-color: #fff;
+}
+
+.export-item {
+  color: #888;
+}
+
+.export-item:after {
+  display: inline-block;
+  margin-left: 0.5rem;
+  content: " .... processing";
+}
+
+.export-item.complete {
+  color: #027a34;
+}
+
+.export-item.complete:before {
+  padding-right: 5px;
+  content: "\2713";
+  display: inline-block;
+}
+
+.export-item.complete:after {
+  content: " .... COMPLETE";
+}

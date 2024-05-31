@@ -1,0 +1,42 @@
+<template>
+  <lightning-modal-header label="Header Overrides"></lightning-modal-header>
+  <lightning-modal-body class="slds-is-relative">
+    <lightning-spinner if:true={isBusy}></lightning-spinner>
+
+    <lightning-layout
+      vertical-align="center"
+      horizontal-align="center"
+      multiple-rows="true"
+    >
+      <template for:each={allOverrides} for:item="override">
+        <lightning-layout-item
+          size="6"
+          padding="horizontal-small"
+          key={override.mrexport__Field_Label__c}
+        >
+          <lightning-input
+            type="text"
+            label={override.mrexport__Field_Label__c}
+            value={override.mrexport__Override_Value__c}
+            class="slds-m-bottom_x-small"
+            onchange={handleOverrideChange}
+          ></lightning-input>
+        </lightning-layout-item>
+      </template>
+    </lightning-layout>
+  </lightning-modal-body>
+  <lightning-modal-footer>
+    <lightning-button
+      label="Cancel"
+      onclick={handleCancel}
+      disabled={isBusy}
+    ></lightning-button>
+    <lightning-button
+      label="Save"
+      onclick={handleSave}
+      variant="brand"
+      class="slds-m-left_small"
+      disabled={isBusy}
+    ></lightning-button>
+  </lightning-modal-footer>
+</template>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Date_Format_String__c</fullName>
+    <description>The Java SimpleDateFormat string used for Date formatting</description>
+    <externalId>false</externalId>
+    <inlineHelpText>The Java SimpleDateFormat string used for Date formatting</inlineHelpText>
+    <label>Date Format String</label>
+    <length>255</length>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

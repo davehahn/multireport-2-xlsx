@@ -1,0 +1,69 @@
+<template>
+  <lightning-modal-header
+    label="Add Report to Export Template"
+  ></lightning-modal-header>
+  <lightning-modal-body class="slds-is-relative">
+    <lightning-spinner if:true={isBusy}></lightning-spinner>
+    <div class="slds-p-around_small" if:true={renderPicker}>
+      <lightning-record-picker
+        label="Find a Report"
+        placeholder="Search Reports..."
+        object-api-name="Report"
+        filter={filter}
+        value={recordPickerValue}
+        onchange={handleReportChange}
+      ></lightning-record-picker>
+    </div>
+    <template if:true={reportSelected}>
+      <div class="slds-p-around_small">
+        <lightning-input
+          type="text"
+          label="Report Id"
+          value={selectedReportId}
+          required
+          disabled="true"
+        ></lightning-input>
+      </div>
+      <div class="slds-p-around_small">
+        <lightning-input
+          type="text"
+          label="Report Name"
+          value={selectedReportName}
+          required
+          disabled="true"
+        ></lightning-input>
+      </div>
+      <div class="slds-p-around_small">
+        <lightning-input
+          type="text"
+          label="Sheet Name (32 chars max.)"
+          max-length="32"
+          value={sheetName}
+          required
+          onchange={handleSheetNameChange}
+        ></lightning-input>
+      </div>
+    </template>
+  </lightning-modal-body>
+  <lightning-modal-footer>
+    <lightning-button
+      label="Cancel"
+      onclick={handleCancel}
+      disabled={isBusy}
+    ></lightning-button>
+    <lightning-button
+      label="Clear"
+      onclick={handleClear}
+      if:true={reportSelected}
+      class="slds-m-left_small"
+    ></lightning-button>
+    <lightning-button
+      variant="brand"
+      label="Save"
+      disabled={disableSave}
+      if:true={reportSelected}
+      onclick={handleSave}
+      class="slds-m-left_small"
+    ></lightning-button>
+  </lightning-modal-footer>
+</template>
